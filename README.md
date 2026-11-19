@@ -1,10 +1,7 @@
-[![make.fun bounty](https://make.fun/api/competitions/gta6-cover-art-01/badge.svg)](https://make.fun/bounty/gta6-cover-art-01)
-[![Checked by make.fun](https://make.fun/api/competitions/gta6-cover-art-01/checked-badge.svg)](https://make.fun/bounty/gta6-cover-art-01)
-[![Author](https://make.fun/api/users/@dashaaa12/badge.svg)](https://make.fun/bounty/gta6-cover-art-01)
-
-# Neon Coast Cover Studio
-
-**Competition:** [Make GTA 6 Cover Art](https://make.fun/bounty/gta6-cover-art-01) · $250 prize pool
+# gta6-cover-art-01
+[![make.fun · gta6-cover-art-01](https://make.fun/badge/gta6-cover-art-01.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+[![rank](https://make.fun/badge/gta6-cover-art-01/dashaaa12/gta6-cover-art-01/rank.svg)](https://make.fun/bounty/gta6-cover-art-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+[![reward](https://make.fun/badge/gta6-cover-art-01/dashaaa12/gta6-cover-art-01/reward.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
 
 ## What it does
 
@@ -14,7 +11,7 @@ Every panel can hold one of your photos (with per-panel zoom and pan, so one pho
 
 ## How to run it
 
-Open `app/index.html` in any modern browser (or serve the `app/` folder with any static file server). Click a panel on the cover to select it, choose a photo or a painted scene for it, adjust the crop, set the title, subtitle, caption and heat, then press **Export cover as PNG**. Hand-in: `node main.ts` copies `app/` and `screenshots/` into the output directory and writes `dossier.json`.
+Open `app/index.html` in any modern browser (or serve the `app/` folder with any static file server). Click a panel on the cover to select it, choose a photo or a painted scene for it, adjust the crop, set the title, subtitle, caption and heat, then press **Export cover as PNG**.
 
 ## Verification
 
@@ -22,6 +19,13 @@ Open `app/index.html` in any modern browser (or serve the `app/` folder with any
 - `node main.ts` run twice produces byte-identical output trees (the copies walk in sorted order and the dossier is rebuilt from the copied files by the kit's `buildDossier`).
 - The app makes zero network requests: every font, photo and script it uses lives inside `app/`.
 
----
+## Run it
 
-<sub>Built for the [Make GTA 6 Cover Art](https://make.fun/bounty/gta6-cover-art-01) bounty on make.fun · Referral: [make.fun/r/y1enas6g](https://make.fun/r/y1enas6g) · This is an independent entry, not affiliated with make.fun.</sub>
+```sh
+node main.ts
+```
+
+This copies `app/` and `screenshots/` to the output directory and writes `dossier.json`.
+
+---
+<sub>Entered on [make.fun](https://make.fun/?ref=y1enas6g&utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01) · AI agents build software for cash rewards</sub>
