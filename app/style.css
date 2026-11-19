@@ -1,0 +1,217 @@
+/* Neon Coast Cover Studio — editor theme: midnight boulevard, neon trim. */
+
+@font-face {
+  font-family: 'Anton';
+  src: url('vendor/fonts/Anton-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pacifico';
+  src: url('vendor/fonts/Pacifico-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(1100px 500px at 85% -10%, rgba(255, 46, 136, 0.16), transparent 60%),
+    radial-gradient(900px 480px at 0% 0%, rgba(25, 227, 255, 0.12), transparent 55%),
+    linear-gradient(180deg, #0a0618 0%, #12082b 55%, #1c0b38 100%);
+  color: #f4eefc;
+  min-height: 100vh;
+}
+
+#topbar {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 16px 26px 10px;
+  flex-wrap: wrap;
+}
+#brand { display: flex; align-items: center; gap: 14px; }
+#brandMark { width: 52px; height: 52px; }
+#brandName {
+  margin: 0;
+  font-family: 'Anton', sans-serif;
+  font-size: 30px;
+  letter-spacing: 2px;
+  background: linear-gradient(92deg, #fff 20%, #ffd166 55%, #ff5da2 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+#brandTag {
+  margin: 0;
+  font-family: 'Pacifico', cursive;
+  font-size: 15px;
+  color: #19e3ff;
+  letter-spacing: 1px;
+}
+#topbarNote { margin: 0; max-width: 520px; color: #bdb1dd; font-size: 14px; line-height: 1.45; }
+
+#layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 348px;
+  gap: 20px;
+  padding: 8px 26px 18px;
+  align-items: start;
+}
+
+#stage { position: sticky; top: 12px; }
+#canvasWrap {
+  border-radius: 14px;
+  padding: 10px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+#coverCanvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 76vh;
+  object-fit: contain;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #f7f2e7;
+}
+#stageHint { color: #9d8fc7; font-size: 13px; margin: 10px 2px 0; }
+
+#controls { display: flex; flex-direction: column; gap: 14px; }
+.card {
+  background: rgba(16, 9, 36, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 14px 16px 16px;
+}
+.card h2 {
+  margin: 0 0 12px;
+  font-family: 'Anton', sans-serif;
+  font-size: 16px;
+  letter-spacing: 1.6px;
+  color: #ffd166;
+  font-weight: 400;
+}
+
+.field { display: block; margin-bottom: 12px; }
+.field > span {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: #c9bdea;
+  margin-bottom: 6px;
+  letter-spacing: 0.4px;
+}
+.field output { color: #19e3ff; font-variant-numeric: tabular-nums; }
+
+input[type="text"], select {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: #0a0618;
+  color: #fff;
+  font-size: 14.5px;
+}
+input[type="text"]:focus, select:focus { outline: 2px solid #ff2e88; outline-offset: 0; }
+
+input[type="range"] { width: 100%; accent-color: #ff2e88; }
+
+#dropZone {
+  display: block;
+  border: 2px dashed rgba(25, 227, 255, 0.45);
+  border-radius: 12px;
+  padding: 16px 12px;
+  text-align: center;
+  cursor: pointer;
+  color: #aee9ff;
+  font-size: 14px;
+  transition: border-color 0.15s, background 0.15s;
+}
+#dropZone:hover, #dropZone.dragging { border-color: #ff2e88; background: rgba(255, 46, 136, 0.08); }
+
+#sampleRow { display: flex; align-items: center; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+#sampleLabel { font-size: 12.5px; color: #9d8fc7; }
+.chip {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f4eefc;
+  border-radius: 999px;
+  padding: 4px 11px;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+.chip:hover { border-color: #ffb300; color: #ffd166; }
+
+#photoStrip { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+#photoStrip figure {
+  margin: 0;
+  width: 62px;
+  cursor: pointer;
+  text-align: center;
+}
+#photoStrip img {
+  width: 62px; height: 46px;
+  object-fit: cover;
+  border-radius: 7px;
+  border: 2px solid transparent;
+}
+#photoStrip figure.on img { border-color: #ff2e88; }
+#photoStrip figcaption { font-size: 10px; color: #9d8fc7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.segRow { display: flex; flex-wrap: wrap; gap: 6px; }
+.segRow button {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: #e8e1fa;
+  border-radius: 9px;
+  padding: 7px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.segRow button.on {
+  background: linear-gradient(92deg, #ff2e88, #ff7a3d);
+  border-color: transparent;
+  color: #fff;
+  font-weight: 600;
+}
+
+.wideBtn, #exportBtn {
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.wideBtn { background: rgba(25, 227, 255, 0.14); color: #aee9ff; border: 1px solid rgba(25, 227, 255, 0.4); }
+.wideBtn:hover { background: rgba(25, 227, 255, 0.22); }
+#exportBtn {
+  background: linear-gradient(92deg, #ff2e88, #ff7a3d);
+  color: #fff;
+  font-family: 'Anton', sans-serif;
+  font-size: 17px;
+  letter-spacing: 1.2px;
+  padding: 13px;
+  box-shadow: 0 10px 26px rgba(255, 46, 136, 0.35);
+}
+#exportBtn:hover { filter: brightness(1.08); }
+#exportNote { font-size: 12.5px; color: #9d8fc7; margin: 10px 0 0; line-height: 1.5; }
+
+#footerNote { padding: 0 26px 22px; color: #7e6fa8; font-size: 12px; }
+
+/* Shot mode: the page is only the cover, for the maker's screenshots. */
+body.shot { background: #000; }
+body.shot #topbar, body.shot #controls, body.shot #stageHint, body.shot #footerNote { display: none; }
+body.shot #layout { display: block; padding: 0; }
+body.shot #stage { position: static; }
+body.shot #canvasWrap { padding: 0; border: 0; border-radius: 0; box-shadow: none; background: none; }
+body.shot #coverCanvas { max-height: none; border-radius: 0; cursor: default; }
+
+@media (max-width: 900px) {
+  #layout { grid-template-columns: 1fr; }
+  #stage { position: static; }
+}

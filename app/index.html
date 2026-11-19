@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Studio — GTA-style cover art maker</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header id="topbar">
+  <div id="brand">
+    <svg id="brandMark" viewBox="0 0 48 48" aria-hidden="true">
+      <circle cx="24" cy="24" r="21" fill="none" stroke="#ff2e88" stroke-width="3"/>
+      <path d="M24 34 L24 18 M24 18 Q16 10 9 13 M24 18 Q24 8 31 7 M24 18 Q33 11 39 15 M24 18 Q18 12 13 20 M24 18 Q30 13 35 20" stroke="#19e3ff" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M10 36 H38" stroke="#ffb300" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <div>
+      <h1 id="brandName">NEON COAST</h1>
+      <p id="brandTag">COVER STUDIO</p>
+    </div>
+  </div>
+  <p id="topbarNote">Turn your photos into Vice City poster art. Everything runs on your machine — photos are never uploaded.</p>
+</header>
+
+<main id="layout">
+  <section id="stage">
+    <div id="canvasWrap">
+      <canvas id="coverCanvas" width="1920" height="1080"></canvas>
+    </div>
+    <p id="stageHint">Click a panel on the cover to select it, then set its photo or painted scene and crop below.</p>
+  </section>
+
+  <aside id="controls">
+    <section class="card" id="photosCard">
+      <h2>1 · Photos</h2>
+      <label id="dropZone">
+        <input type="file" id="photoInput" accept="image/*" multiple hidden>
+        <span id="dropZoneText">Drop photos here or click to choose</span>
+      </label>
+      <div id="sampleRow">
+        <span id="sampleLabel">Samples:</span>
+        <button type="button" class="chip" data-sample="0">Boulevard</button>
+        <button type="button" class="chip" data-sample="1">Rooftop</button>
+        <button type="button" class="chip" data-sample="2">Neon Street</button>
+      </div>
+      <div id="photoStrip"></div>
+    </section>
+
+    <section class="card" id="panelCard">
+      <h2>2 · Panel <span id="selectedPanelName">1</span></h2>
+      <label class="field">
+        <span>Panel shows</span>
+        <select id="panelSource"></select>
+      </label>
+      <label class="field">
+        <span>Zoom <output id="zoomOut">1.00×</output></span>
+        <input type="range" id="zoomRange" min="1" max="2.6" step="0.01" value="1">
+      </label>
+      <label class="field">
+        <span>Pan left / right <output id="panXOut">0</output></span>
+        <input type="range" id="panXRange" min="-1" max="1" step="0.01" value="0">
+      </label>
+      <label class="field">
+        <span>Pan up / down <output id="panYOut">0</output></span>
+        <input type="range" id="panYRange" min="-1" max="1" step="0.01" value="0">
+      </label>
+      <button type="button" id="fillAllBtn" class="wideBtn">Fill every panel with the selected photo</button>
+    </section>
+
+    <section class="card" id="lookCard">
+      <h2>3 · Look</h2>
+      <div class="field">
+        <span>Layout</span>
+        <div class="segRow" id="layoutSeg">
+          <button type="button" data-layout="collage" class="on">Vice Collage</button>
+          <button type="button" data-layout="quad">Four Corners</button>
+          <button type="button" data-layout="hero">Hero + Insets</button>
+          <button type="button" data-layout="strips">Panel Strips</button>
+        </div>
+      </div>
+      <div class="field">
+        <span>Colour grade</span>
+        <div class="segRow" id="gradeSeg">
+          <button type="button" data-grade="sunset" class="on">Vice Sunset</button>
+          <button type="button" data-grade="neon">Neon Nights</button>
+          <button type="button" data-grade="golden">Golden Hour</button>
+          <button type="button" data-grade="noir">Midnight Noir</button>
+        </div>
+      </div>
+      <div class="field">
+        <span>Post size</span>
+        <div class="segRow" id="sizeSeg">
+          <button type="button" data-size="landscape" class="on">1920 × 1080</button>
+          <button type="button" data-size="square">1080 × 1080</button>
+          <button type="button" data-size="portrait">1080 × 1350</button>
+        </div>
+      </div>
+      <label class="field">
+        <span>Film grain <output id="grainOut">50%</output></span>
+        <input type="range" id="grainRange" min="0" max="1" step="0.01" value="0.5">
+      </label>
+    </section>
+
+    <section class="card" id="wordsCard">
+      <h2>4 · Words</h2>
+      <label class="field">
+        <span>Title</span>
+        <input type="text" id="titleInput" value="GRAND THEFT AUTO VI" maxlength="42">
+      </label>
+      <label class="field">
+        <span>Script subtitle</span>
+        <input type="text" id="subtitleInput" value="Vice City" maxlength="30">
+      </label>
+      <label class="field">
+        <span>Caption bar</span>
+        <input type="text" id="captionInput" value="WELCOME BACK TO THE CITY OF NEON" maxlength="60">
+      </label>
+      <label class="field">
+        <span>Heat — wanted stars <output id="heatOut">5</output></span>
+        <input type="range" id="heatRange" min="0" max="5" step="1" value="5">
+      </label>
+    </section>
+
+    <section class="card" id="exportCard">
+      <h2>5 · Export</h2>
+      <button type="button" id="exportBtn">Export cover as PNG</button>
+      <p id="exportNote">Exports at the post size you picked, ready to share. No watermark, no upload, no sign-up.</p>
+    </section>
+  </aside>
+</main>
+
+<footer id="footerNote">
+  <p>Neon Coast Cover Studio is an unofficial fan tool. It is not affiliated with Rockstar Games or Take-Two Interactive. Lettering: Anton and Pacifico, both under the SIL Open Font License.</p>
+</footer>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
